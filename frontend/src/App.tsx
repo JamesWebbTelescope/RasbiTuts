@@ -1,11 +1,14 @@
-import './index.css'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "./index.css"
+import Home from "./pages/Home";
 
-function App() {
+
+export default function App() {
   return (
-    <div className="flex items-center justify-center h-screen bg-gradient-to-r from-purple-500 to-blue-500 text-white text-4xl font-bold">
-      Hello Tailwind + React + Vite! 🚀
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
-
-export default App

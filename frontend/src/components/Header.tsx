@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 //import { getToken } from "../services/authService"; //clearToken
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 export default function Navbar() {
   const [userName, setUserName] = useState<string | null>(null);
@@ -10,17 +10,17 @@ export default function Navbar() {
   const holoLinkClass = `
     relative
     px-4 py-2
-    text-white
+    text-green
     font-semibold
     rounded-lg
     transition-all
     duration-300
-    hover:text-cyan-400
+    hover:text-green-400
     hover:drop-shadow-[0_0_15px_rgba(0,255,255,0.9)]
     before:absolute
     before:inset-0
     before:rounded
-    before:bg-cyan-400
+    before:bg-green-400
     before:opacity-20
     before:blur-xl
     before:scale-110
@@ -53,12 +53,6 @@ export default function Navbar() {
     <nav className="flex gap-6 justify-center mt-6">
       <a href="/" className={holoLinkClass}>
         Home
-      </a>
-      <a href="/products" className={holoLinkClass}>
-        Products
-      </a>
-      <a href="/invoice" className={holoLinkClass}>
-        Invoices
       </a>
 
       {userName ? (
