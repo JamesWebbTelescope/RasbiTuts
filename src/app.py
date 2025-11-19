@@ -46,8 +46,8 @@ def create_app():
 
     # Create the endpoint to serve the frontpage
     @app.route("/")
-    #@app.route("/products")
-    #@app.route("/customer")
+    @app.route("/students")
+    @app.route("/tutorials")
     #@app.route("/admin")
     def serve_react():  
         return send_from_directory(app.static_folder, 'index.html')
