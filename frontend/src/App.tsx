@@ -1,4 +1,4 @@
-import './components/Layout.css'
+import './index.css'
 
 function App() {
   return (
