@@ -23,7 +23,7 @@ export const GetTutorials = async (url: string) => {
 
 export const GetStudents = async (url: string) => {
     try{
-        const res = await fetch(`${url}/api/tutorials`)
+        const res = await fetch(`${url}/api/students`)
         const data = await res.json
         let students: Array<StudentData>
         for(let i = 0; i < data.length; i++)

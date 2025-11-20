@@ -35,13 +35,13 @@ export default function Navbar() {
 
     const fetchUser = async () => {
       try {
-        const res = await fetch(`${API_URL}/api/auth/profile/me`, {
+        /*const res = await fetch(`${API_URL}/api/auth/profile/me`, {
           headers: { Authorization: `Bearer` },
         });
         if (res.ok) {
           const data = await res.json();
           setUserName(data.name);
-        }
+        }*/
       } catch (err) {
         console.error(err);
       }
@@ -54,22 +54,20 @@ export default function Navbar() {
       <a href="/" className={holoLinkClass}>
         Home
       </a>
-
-      {userName ? (
+      <a href="/students" className={holoLinkClass}>
+        Students
+      </a>
+      {
         <button
           onClick={() => {
             // clearToken();
-            navigate("/admin");
+            navigate("/students");
           }}
           className={holoLinkClass}
         >
-          {userName}
+          {}
         </button>
-      ) : (
-        <a href="/admin" className={holoLinkClass}>
-          Login
-        </a>
-      )}
+      }
     </nav>
   );
 }

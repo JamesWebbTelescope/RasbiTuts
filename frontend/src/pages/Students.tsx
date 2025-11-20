@@ -18,6 +18,7 @@ export default function StudentsPage() {
     useEffect(() => {
         const fetchData = async () => {
             const students = await GetStudents(API_URL);
+            console.log("Welcome to the student page")
             for(const student of students){
                 console.log(`Getting all students`)
                 const stud = students.find(item => item.id === student.id);
