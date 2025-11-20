@@ -21,6 +21,10 @@ WORKDIR /app
 # Create a non-privileged user that the app will run under.
 # See https://docs.docker.com/go/dockerfile-user-best-practices/
 ARG UID=10001
+RUN apt-get update -y
+RUN apt-get install pkg-config -y
+RUN apt-get install -y python3-dev build-essential
+RUN apt-get install -y default-libmysqlclient-dev
 RUN adduser \
     --disabled-password \
     --gecos "" \
@@ -34,12 +38,6 @@ RUN adduser \
 # Leverage a cache mount to /root/.cache/pip to speed up subsequent builds.
 # Leverage a bind mount to requirements.txt to avoid having to copy them into
 # into this layer.
-
-RUN curl -sS https://downloads.mariadb.com/MariaDB/mariadb_repo_setup | bash
-RUN apt-get update
-RUN apt-get install libmariadb-dev -y
-RUN apt-get install libmariadb3 -y
-
 RUN --mount=type=cache,target=/root/.cache/pip \
     --mount=type=bind,source=requirements.txt,target=requirements.txt \
     python -m pip install -r requirements.txt

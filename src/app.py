@@ -69,7 +69,7 @@ def create_app():
     #jwt.init_app(app)
     
     #setup admin user
-    create_admin_user(dbManger)
+    #create_admin_user(dbManger)
     
 
     return app
