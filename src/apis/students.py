@@ -19,7 +19,7 @@ def create_api_students(db_manager):
         @api.doc('Get all students')
         def get(self):
             students = db_manager.students.GetAll()
-            return jsonify(students, 200)
+            return students, 200
         
         @api.expect(student_model)
         def post(self):
@@ -27,7 +27,7 @@ def create_api_students(db_manager):
             lastname = api.payload['lastname']
             status = api.payload['status']
             result = db_manager.students.Create(firstname, lastname, status)
-            return result
+            return result, 200
         
         @api.expect(student_model)
         def put(self):
@@ -36,12 +36,12 @@ def create_api_students(db_manager):
             lastname = api.payload['lastname']
             status = api.payload['status']
             result = db_manager.students.Update(ID, firstname, lastname, status)
-            return result
+            return result, 200
         
         @api.expect(student_model)
         def delete(self):
             ID = api.payload['ID']
             result = db_manager.students.Delete(ID)
-            return result
+            return result, 200
     
     return api

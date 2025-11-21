@@ -17,7 +17,7 @@ def create_api_tutorials(db_manager):
         @api.doc("Get all tutorials")
         def get(self):
             tutorials = db_manager.tutorials.GetAll()
-            return tutorials
+            return tutorials, 200
         
         @api.doc("Add new tutorial")
         @api.expect(tutorial_model)
@@ -25,7 +25,7 @@ def create_api_tutorials(db_manager):
             name = api.payload['name']
             link = api.payload['link']
             tutorials = db_manager.tutorials.Create(name, link)
-            return tutorials
+            return tutorials, 200
         
         @api.doc("Update tutorials")
         @api.expect(tutorial_model)
@@ -34,14 +34,14 @@ def create_api_tutorials(db_manager):
             name = api.payload['name']
             link = api.payload['link']
             tutorials = db_manager.tutorials.Update(ID, name, link)
-            return tutorials
+            return tutorials, 200
         
         @api.doc("Update tutorials")
         @api.expect(delete_tutorial_model)
         def delete(self):
             ID = api.payload['ID']
             tutorials = db_manager.tutorials.Delete(ID)
-            return tutorials
+            return tutorials, 200
 
         
     return api
