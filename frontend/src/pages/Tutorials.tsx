@@ -17,7 +17,7 @@ export default function TutorialsPage() {
     const API_URL = import.meta.env.VITE_API_URL;
     const results: DisplayTutorial[] = [];
 
-    const setDisplay = (url: string) => {
+    const setDisplay = async (url: string) => {
         let result = url.includes("youtube")
         if(result)
         {
@@ -25,14 +25,13 @@ export default function TutorialsPage() {
             console.log("This is a youtube link")
             return ([
                 <VideoPlayer/>,
-                updateDisplay(display)
-        ])
+                updateDisplay(!display)])
         }
         else
         {
             console.log(url)
             console.log("Nothing has happened yet")
-            return ([updateDisplay(display)])
+            return ([updateDisplay(!display)])
         }
 
     }
@@ -67,6 +66,7 @@ export default function TutorialsPage() {
                 <Dropdown.Item onClick={() => {
                             // clearToken();
                             setDisplay(item.link)
+                            updateDisplay(!display)
                         }}>{item.name}
                 </Dropdown.Item>
                 </Dropdown.Menu>
