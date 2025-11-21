@@ -11,10 +11,32 @@ interface DisplayTutorial {
 }
 
 export default function TutorialsPage() {
-    const [tutorial, setTutorialData] = useState<DisplayTutorial[]>([])
+    const [tutorials, setTutorialData] = useState<DisplayTutorial[]>([])
+    const [display, updateDisplay] = useState(false)
 
     const API_URL = import.meta.env.VITE_API_URL;
     const results: DisplayTutorial[] = [];
+
+    const setDisplay = (url: string) => {
+        let result = url.includes("youtube")
+        if(result)
+        {
+            console.log(url)
+            console.log("This is a youtube link")
+            return ([
+                <VideoPlayer/>,
+                updateDisplay(display)
+        ])
+        }
+        else
+        {
+            console.log(url)
+            console.log("Nothing has happened yet")
+            return ([updateDisplay(display)])
+        }
+
+    }
+
     useEffect(() => {
             const fetchData = async () => {
                 const tutorials = await GetTutorials(API_URL);
@@ -39,11 +61,15 @@ export default function TutorialsPage() {
         }, []);
 
     return <Layout>
-        <Dropdown.Menu show>
-            <Dropdown.Header>Dropdown header</Dropdown.Header>
-            <Dropdown.Item eventKey="2">Another action</Dropdown.Item>
-            <Dropdown.Item eventKey="3">Something else here</Dropdown.Item>
-            </Dropdown.Menu>
-        <VideoPlayer/>
+        <Dropdown.Header>Tutorials</Dropdown.Header>
+            {tutorials.map((item, index) => (
+                <Dropdown.Menu show key={index}>
+                <Dropdown.Item onClick={() => {
+                            // clearToken();
+                            setDisplay(item.link)
+                        }}>{item.name}
+                </Dropdown.Item>
+                </Dropdown.Menu>
+                ))}
     </Layout>
 }

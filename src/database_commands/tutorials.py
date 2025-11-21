@@ -10,7 +10,7 @@ class TutorialModel:
         try:
             conn = self.db.get_connection()
             with conn.cursor() as cursor:
-                cursor.execute("SELECT * FROM tutorials.tutorials")
+                cursor.execute("SELECT * FROM tutorials")
                 myresult = cursor.fetchall()
                 results = [] 
                 for u in myresult:
