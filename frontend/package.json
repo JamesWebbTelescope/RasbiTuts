@@ -12,6 +12,8 @@
   "dependencies": {
     "@tailwindcss/postcss": "^4.1.17",
     "axios": "^1.13.2",
+    "dompurify": "^3.3.0",
+    "html-react-parser": "^5.2.10",
     "react": "^19.2.0",
     "react-bootstrap": "^2.10.10",
     "react-dom": "^19.2.0",
