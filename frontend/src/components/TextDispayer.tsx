@@ -14,7 +14,7 @@ class TextRender extends React.Component<TextProps>{
 
     }
     render() {
-
+        this.fetchData()
         return <div></div>
     }
 }
