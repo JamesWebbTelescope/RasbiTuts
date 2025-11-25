@@ -1,17 +1,20 @@
 import React from "react";
+import { GetExternal } from "../services/apiService";
 
 interface TextProps {
     url: string
+    tutorial: string
 }
 
 class TextRender extends React.Component<TextProps>{
-    render(): React.ReactNode {
-        let website = fetch(this.props.url).then(response => {(response.text);
-            return response.text
-        });
-        //let website = fetch(this.props.url)
+    fetchData = async() => {
+        let res = await GetExternal(this.props.url, this.props.tutorial);
+        let data = res
+        console.log(data)
 
-        console.log(website)
+    }
+    render() {
+
         return <div></div>
     }
 }
