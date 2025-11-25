@@ -1,5 +1,6 @@
 import mysql.connector
 import requests
+from requests_html import HTMLSession
 
 class TutorialModel:
 
@@ -11,10 +12,15 @@ class TutorialModel:
             print("Accessing external tutorial")
             print(url)
             self.is_valid_url(url)
-            response = requests.get(url, timeout=5)
-            return response.text
+            session = HTMLSession()
+            response = session.get(url)
+            response = response.html.find('body')
+            print(response)
+            #soup = BeautifulSoup(response.text, "html.parser")
+            #text_content = soup.get_text(separator="\n", strip=True)
+            return response[0].text
         except Exception as e:
-            print("Error getting tutorial", e)
+            print("Error getting tutorial:", e)
             return False
 
     def GetAll(self):
