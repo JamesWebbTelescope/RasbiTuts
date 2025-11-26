@@ -8,16 +8,16 @@ interface TextProps {
 
 class TextRender extends React.Component<TextProps>{
     
-    fetchData = async() =>  {
-        const res = await GetExternal(this.props.url, this.props.tutorial);
-        const htmlString = await res.text;
-
-        return <div dangerouslySetInnerHTML={{ __html: htmlString }} />;
+    fetchData = async() => {
+        let res = await GetExternal(this.props.url, this.props.tutorial)
+        // Example: Extract all text from the body
+        return {res}
 
     }
 
     render() {
-        const htmlString = this.fetchData().then((html) => {return html})
+        const htmlString: any = this.fetchData().then((result) => {return result;}).catch((error) => {console.log(error); return null;});
+        console.log("Getting text from websites")
         console.log(htmlString)
         return <div dangerouslySetInnerHTML={{ __html: htmlString}}></div>
     }
