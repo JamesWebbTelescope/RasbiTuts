@@ -1,10 +1,8 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 //import { getToken } from "../services/authService"; //clearToken
 import { useNavigate } from 'react-router-dom';
 
 export default function Navbar() {
-  const [userName, setUserName] = useState<string | null>(null);
-  const API_URL = import.meta.env.VITE_API_URL;
   const navigate = useNavigate();
 
   const holoLinkClass = `

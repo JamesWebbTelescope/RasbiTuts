@@ -6,19 +6,23 @@ interface LayoutProps {
   children: ReactNode;
 }
 
+const layoutStyle = {
+    minHeight: "100vh", // full viewport height
+    backgroundImage: `C:\Users\SPAC-O-1\Projekter\RaspberryPiTutorials_uge10_11\frontend\src\assets\raspberry-pi-5.png`,
+    backgroundSize: "cover", // scale to cover
+    backgroundPosition: "center", // center the image
+    backgroundRepeat: "no-repeat",
+  };
+
 export default function Layout({ children }: LayoutProps) {
   return (
-    <div className="dark min-h-screen flex flex-col bg-black text-gray-100">
-      <Header />
-      <main className="grow max-w-6xl mx-auto px-4 py-8">
-        {children}
-      </main>
-
-
-      <footer className="bg-gray-900 text-center py-4 text-gray-400">
-        © 2025 Raspberry Pi Tutorials. All rights reserved.
-      </footer>
-
+    <div style={layoutStyle}>
+      <h1 style={{ color: "black", textAlign: "center", paddingTop: "0vh" }}>
+        <Header />
+      </h1>
+      <main>
+          {children}
+        </main>
     </div>
   );
 }

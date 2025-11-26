@@ -25,9 +25,14 @@ export const GetExternal = async (url: string, tutorial: string) => {
     try{
         console.log('Getting external tutorial')
         console.log(`${url}/api/tutorials/external?url=${tutorial}`)
-        const res = await fetch(`${url}/api/tutorials/external?url=${tutorial}`)
-        const data = await res.json()
-        return data
+        const res = await fetch(`${url}/api/tutorials/external?url=${tutorial}`).then((data) => {
+            console.log(data);
+            return data;
+        }).catch((error) => {
+            console.error("Error fetching tutorial:", error);
+        });
+        //const data = await res.json()
+        return res
     }
     catch(error){
         console.log("Error fetching external tutorial:", error);
