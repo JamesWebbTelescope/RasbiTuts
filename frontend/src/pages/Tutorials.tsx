@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import VideoPlayer from "../components/VideoPlayer";
 import TextRender from "../components/TextDispayer";
 import { GetTutorials } from "../services/apiService";
-import { Dropdown } from "react-bootstrap";
+import Dropdown from "react-bootstrap/Dropdown";
 
 interface DisplayTutorial {
     id: number;
@@ -64,19 +64,23 @@ export default function TutorialsPage() {
         }, []);
 
     return <Layout>
-        <Dropdown.Header>Tutorials</Dropdown.Header>
-            {tutorials.map((item, index) => (
-                <Dropdown.Menu show key={index}>
-                <Dropdown.Item onClick={() => {
-                            // clearToken();
-                            setDisplay(item.link)
-                            updateDisplay(!display)
-                        }}>{item.name}
-                </Dropdown.Item>
-                </Dropdown.Menu>
-                ))}
-        <>
-            {display ? <VideoPlayer url={link.current}/>: < TextRender url ={API_URL} tutorial={link.current} />}
-        </>
+        <div className="text-center bg-red-800/70 text-green-300 uppercase text-sm font-semibold tracking-wide">
+            <Dropdown>
+                <Dropdown.Header>Tutorials</Dropdown.Header>
+                    {tutorials.map((item, index) => (
+                        <Dropdown.Menu show key={index}>
+                        <Dropdown.Item onClick={() => {
+                                    // clearToken();
+                                    setDisplay(item.link)
+                                    updateDisplay(!display)
+                                }}>{item.name}
+                        </Dropdown.Item>
+                        </Dropdown.Menu>
+                        ))}
+                <>
+                    {display ? <VideoPlayer url={link.current}/>: < TextRender url ={API_URL} tutorial={link.current} />}
+                </>
+            </Dropdown>
+        </div>
     </Layout>
 }

@@ -43,7 +43,7 @@ export default function StudentsPage() {
     return(
     <Layout >
         <div className="overflow-x-auto rounded-2xl border border-cyan-600/50 shadow-[0_0_20px_rgba(34,211,238,0.3)]">
-                <h2>Students</h2>
+                <h2 className="text-center bg-gray-800/70 text-green-300 uppercase text-sm font-semibold tracking-wide">Students</h2>
 
 
                 <table className="min-w-full text-black-200">
