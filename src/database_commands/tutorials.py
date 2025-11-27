@@ -6,85 +6,109 @@ class TutorialModel:
 
     def __init__(self, db):
         self.db = db
-
+    '''
+    This is for getting the text from blog posts, websites etc.
+    '''
     def GetExternal(self, url):
         try:
             print("Accessing external tutorial")
             print(url)
-            self.is_valid_url(url)
-            session = HTMLSession()
-            response = session.get(url)
-            response = response.html.find('body')
+            self.is_valid_url(url) #Check that it is a valid link.
+            session = HTMLSession() #Start a new website session
+            response = session.get(url) #Get the response from the website
+            response = response.html.find('body') #Find the body of the response
             print(response)
             #soup = BeautifulSoup(response.text, "html.parser")
             #text_content = soup.get_text(separator="\n", strip=True)
-            return response[0].text
-        except Exception as e:
-            print("Error getting tutorial:", e)
+            return response[0].text #Return it as a text string
+        except Exception as e: #If anything goes wrong
+            print("Error getting tutorial:", e) #Print the error
             return False
+    
+    '''
+    This is for getting all tutorials from the database
+    '''
 
     def GetAll(self):
         try:
-            conn = self.db.get_connection()
-            with conn.cursor() as cursor:
-                cursor.execute("SELECT * FROM tutorials")
-                myresult = cursor.fetchall()
+            conn = self.db.get_connection() #Open a connection to the database
+            with conn.cursor() as cursor: #Open a cursor for the connection
+                cursor.execute("SELECT * FROM tutorials") #Find all tutorials
+                myresult = cursor.fetchall() #Get the response
                 results = [] 
                 for u in myresult:
-                    results.append(TutorialModel._TupleToDict(u))
+                    results.append(TutorialModel._TupleToDict(u)) #Return the response as a tuple
                 return results
         except Exception as e:
-            print("Error getting all tutorials", e)
+            print("Error getting all tutorials", e) #If anything goes wrong, print the error
             return False
         
     def Create(self, name, link):
+        '''
+        Docstring for Create
+        
+        :param name: Name of the tutorial that you want to add
+        :param link: Link for the tutorial that you want to add
+        '''
         try:
-            response = self.is_valid_url(link)
-            if(response == True):
-                conn = self.db.get_connection()
-                with conn.cursor() as cursor:
-                    cursor.execute(f"INSERT INTO tutorials.tutorials (name, link) VALUES('{name}', '{link}')")
+            response = self.is_valid_url(link) #Check that the link is valid
+            if(response == True): #If it is
+                conn = self.db.get_connection() #Open a connection to the database
+                with conn.cursor() as cursor: #Get a cursor
+                    cursor.execute(f"INSERT INTO tutorials.tutorials (name, link) VALUES('{name}', '{link}')") #Add the new tutorial
                     myresult = cursor.fetchall()
-                conn.commit()
+                conn.commit() #Commit the connection
                 return True
             else:
-                return False
+                return False #If it doesn't work, return False
         
-        except Exception as e:
+        except Exception as e: #If anything goes wrong, print the error
             print("Error adding tutorial", e)
             return False
     
     def Update(self, ID, name, link):
+        '''
+        Docstring for Update
+        
+        :param ID: ID of the tutorial that you wnat to update
+        :param name: New name for the tutorial
+        :param link: New link for the tutorial
+        '''
         try:
-            response = self.is_valid_url(link)
+            response = self.is_valid_url(link) #Check that the link is valid
             if(response == True):
-                conn = self.db.get_connection()
-                with conn.cursor() as cursor:
-                    cursor.execute(f"UPDATE tutorials SET name = '{name}', link = '{link}' WHERE tutorialID = {ID}")
-                    myresult = cursor.fetchall()
-                conn.commit()
+                conn = self.db.get_connection() #Open a connection to the database
+                with conn.cursor() as cursor: #Open a cursor
+                    cursor.execute(f"UPDATE tutorials SET name = '{name}', link = '{link}' WHERE tutorialID = {ID}") #Update the desired tutorial with the given name and link
+                    myresult = cursor.fetchall() #Get the response
+                conn.commit() #Close the connection
                 return True
             else:
                 return False
-        except Exception as e:
-            print("Error updating student", e)
+        except Exception as e: #If anything goes wrong, print the error
+            print("Error updating tutorial", e)
             return False
         
     def Delete(self, ID):
+        '''
+        Docstring for Delete
+        
+        :param ID: ID of the tutorial that you want to remove
+        '''
         try:
-            conn = self.db.get_connection()
-            with conn.cursor() as cursor:
-                cursor.execute(f"UPDATE tutorials SET name = '', link = '' WHERE tutorialID = {ID}")
+            conn = self.db.get_connection() #Open a connection to the database
+            with conn.cursor() as cursor: #Open a cursor
+                cursor.execute(f"UPDATE tutorials SET name = '', link = '' WHERE tutorialID = {ID}") #Delete name and link for the tutorial
                 myresult = cursor.fetchall()
-            conn.commit()
+            conn.commit() #Close the connection
             return True
-        except Exception as e:
+        except Exception as e: #If anything goes wrong, print the error
             print("Error updating student", e)
             return False
         
     def is_valid_url(self, link):
         try:
-            response = requests.head(link, allow_redirects=True, timeout=5)
+            response = requests.head(link, allow_redirects=True, timeout=5) #Any valid URL will have a head, so if the website returns a head, that means that it is valid
             return True
         except requests.exceptions.MissingSchema:
             # Raised if the URL is malformed (e.g., missing http/https)
