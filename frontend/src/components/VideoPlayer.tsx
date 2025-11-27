@@ -5,6 +5,16 @@ interface YoutubeProps {
   url: string
  }
 
+const styles = {
+  container: {
+    display: "flex",
+    justifyContent: "center", // horizontal center
+    alignItems: "center",     // vertical center
+    height: "50vh",          // full viewport height
+    backgroundColor: "#000",  // optional background
+  },
+};
+ 
  class MovieClip extends React.Component<YoutubeProps> {
 
       findId(url: string){
@@ -21,10 +31,14 @@ interface YoutubeProps {
         playerVars: {
           autoplay: 1,
           controls: 1,
+          rel: 0,            // Don't show related videos at the end
+          modestbranding: 1,
         },
       };
     
-      return <YouTube videoId={this.findId(this.props.url)} opts={options} onReady={this._onReady} id="video" />;
+      return <div style={styles.container}>
+              <YouTube videoId={this.findId(this.props.url)} opts={options} onReady={this._onReady} id="video" />;
+      </div>
     }
   
     _onReady(event: any) {
