@@ -75,7 +75,15 @@ This project has two separate components: a backend server and a frontend server
   ```
   cd frontend
   ```
-  Run the following comamnd
+  Run the following command
+  ```
+  npm run dev
+  ```
+  If everything works, you should see the following output:
+  ```
+  http://localhost:####/
+  ```
+  Go to the website and you should see the Raspberry Pi Tutorials website on your local computer.
 
 ## Design
 This system is designed as a Model-View-View-Model (MVVM) system.
