@@ -40,9 +40,9 @@ pip install -r requirements.txt
 * Run commands
 ```
 npm install
-npm run dev
 ```
 ### Executing program
+This project has two separate components: a backend server and a frontend server. Both need to be running for the project to work.
 
 ## Docker container
 * This project is designed to be used with a Docker Container. To run the container, download Docker Desktop: https://www.docker.com/products/docker-desktop/
@@ -70,24 +70,12 @@ npm run dev
   ```
   Running on http://###.#.#.#:8000
   ```
-  
-
-### Tests
-The project uses the package `pytest` to perform unit- and integration-tests.
-* Open terminal (powershell/bash)
-* Go to Project Root Directory
-* Run the command (all tests)
-```
-pytest
-```
-* Run the command (unit tests)
-```
-pytest tests/unit
-```
-* Run the command (integration tests)
-```
-pytest tests/integration
-```
+  ## Frontend
+  When the Docker Container is up and running, navigate to the frontend directory
+  ```
+  cd frontend
+  ```
+  Run the following comamnd
 
 ## Design
 This system is designed as a Model-View-View-Model (MVVM) system.
