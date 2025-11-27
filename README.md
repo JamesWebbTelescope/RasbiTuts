@@ -89,7 +89,7 @@ This project has two separate components: a backend server and a frontend server
 This system is designed as a Model-View-View-Model (MVVM) system.
 That means that all data handling is done by the backend and the frontend only handles user inputs and showing the data.
 ### Overall system design
-<img width="121" height="291" alt="Frontend API drawio" src="https://github.com/user-attachments/assets/811a4c37-b599-41cd-b9d2-5a04dce749ee" />
+<img width="121" height="291" alt="Frontend API drawio" src="https://github.com/JamesWebbTelescope/RaspberryPiTutorials_uge10_11/blob/main/Raspberry%20Pi%20Tutorial%20API.png" />
 
 
 ## Help
