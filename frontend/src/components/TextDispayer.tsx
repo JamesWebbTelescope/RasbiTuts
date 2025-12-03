@@ -37,7 +37,7 @@ class TextRender extends React.Component<TextProps>{
         this.componentDidMount()
         const cleanHTML = DOMPurify.sanitize(htmlref.toString());
         console.log("Length of HTML")
-        console.log(cleanHTML.length)
+        console.log(cleanHTML)
         return (
         <div>
             <h1>React Render HTML String</h1>

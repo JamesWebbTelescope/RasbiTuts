@@ -21,7 +21,8 @@ def create_api_tutorials(db_manager):
             print(url.encode('UTF-8'))
             print(url)
             response = db_manager.tutorials.GetExternal(url)
-            return response.decode('UTF-8'), 200
+            response_decoded = response.decode('UTF-8')
+            return response_decoded, 200
 
     @api.route("/")
     class Tutorials(Resource):
