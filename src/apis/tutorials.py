@@ -1,5 +1,5 @@
 from flask_restx import Namespace, Resource, fields, Model
-from flask import request
+from flask import request, jsonify
 from apis.auth import authorizations
 
 def create_api_tutorials(db_manager):

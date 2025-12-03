@@ -36,12 +36,13 @@ class TextRender extends React.Component<TextProps>{
     render() {
         this.componentDidMount()
         const cleanHTML = DOMPurify.sanitize(htmlref.toString());
+        console.log("Length of HTML")
         console.log(cleanHTML.length)
         return (
         <div>
             <h1>React Render HTML String</h1>
             {/* Render sanitized HTML */}
-            <div dangerouslySetInnerHTML={{ __html: cleanHTML }} />
+            <div dangerouslySetInnerHTML={{ __html: cleanHTML}} />
         </div>
   );
     }
