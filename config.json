@@ -1,8 +1,8 @@
 {
     "db_name": "tutorials",
-    "db_host": "172.29.176.1",
-    "db_user": "root",
-    "db_password": "YES",
+    "db_host": "192.168.174.47",
+    "db_user": "viktor",
+    "db_password": "raspberry",
     "debug": true,
     "swagger_ui": true,
     "api_host": "0.0.0.0",
