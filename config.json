@@ -1,6 +1,6 @@
 {
     "db_name": "tutorials",
-    "db_host": "192.168.174.47",
+    "db_host": "raspberrypi.local",
     "db_user": "viktor",
     "db_password": "raspberry",
     "debug": true,
