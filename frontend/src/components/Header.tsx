@@ -49,17 +49,17 @@ export default function Navbar() {
 
   return (
     <nav className="flex gap-6 justify-center mt-6">
-      <a href="/" className={holoLinkClass}>
+      <a href="/#" className={holoLinkClass}>
         Home
       </a>
-      <a href="/students" className={holoLinkClass}>
+      <a href="/#/students" className={holoLinkClass}>
         Students
       </a>
       {
         <button
           onClick={() => {
             // clearToken();
-            navigate("/students");
+            navigate("/#/students");
           }}
           className={holoLinkClass}
         >
