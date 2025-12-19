@@ -9,9 +9,9 @@ export default function App() {
   return (
     <HashRouter>
       <Routes>
-        <Route path="/#" element={<Home />} />
-        <Route path="/#/students" element={<StudentsPage/>}/>
-        <Route path="/#/tutorials" element={<TutorialsPage/>}/>
+        <Route path="/" element={<Home />} />
+        <Route path="/students" element={<StudentsPage/>}/>
+        <Route path="/tutorials" element={<TutorialsPage/>}/>
       </Routes>
     </HashRouter>
   );
