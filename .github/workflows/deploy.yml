@@ -50,10 +50,6 @@ jobs:
         uses: actions/upload-pages-artifact@v4
         with:
           # Upload dist folder
-          path: './frontend/dist'
-      - name: Upload assets
-        with:
-          # Upload dist folder
           path: './frontend/dist/assets'
       - name: Deploy to GitHub Pages
         id: deployment
