@@ -3,7 +3,7 @@
   "private": false,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://jameswebbtelescope.github.io/RaspberryPiTutorials_uge10_11/",
+  "homepage": "https://jameswebbtelescope.github.io/RasbiTuts/",
   "scripts": {
     "dev": "vite",
     "predeploy": "npm run build",
