@@ -3,11 +3,11 @@
   "private": false,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://jameswebbtelescope.github.io/RaspberryPiTutorials_uge10_11",
+  "homepage": "https://jameswebbtelescope.github.io",
   "scripts": {
     "dev": "vite",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist",
+    "deploy": "gh-pages -b main -d dist",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
