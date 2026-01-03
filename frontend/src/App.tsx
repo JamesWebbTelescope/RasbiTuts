@@ -7,7 +7,7 @@ import TutorialsPage from "./pages/Tutorials";
 
 export default function App() {
   return (
-    <HashRouter basename="/">
+    <HashRouter basename="/#/">
       <Routes>
         <Route path="/#/" element={<Home />} />
         <Route path="/#/students" element={<StudentsPage/>}/>
