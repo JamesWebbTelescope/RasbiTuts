@@ -9,9 +9,9 @@ export default function App() {
   return (
     <HashRouter basename="/">
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/" element={<StudentsPage/>}/>
-        <Route path="/" element={<TutorialsPage/>}/>
+        <Route path="/RasbiTuts" element={<Home />} />
+        <Route path="/RasbiTuts/students" element={<StudentsPage/>}/>
+        <Route path="/RasbiTuts/tutorials" element={<TutorialsPage/>}/>
       </Routes>
     </HashRouter>
   );
