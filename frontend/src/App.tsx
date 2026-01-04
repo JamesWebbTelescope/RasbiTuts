@@ -9,7 +9,7 @@ export default function App() {
   return (
     <HashRouter>
       <Routes>
-        <Route path="/RasbiTuts/" element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route path="/RasbiTuts/students" element={<StudentsPage/>}/>
         <Route path="/RasbiTuts/tutorials" element={<TutorialsPage/>}/>
       </Routes>
