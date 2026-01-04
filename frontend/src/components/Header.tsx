@@ -49,7 +49,7 @@ export default function Navbar() {
 
   return (
     <nav className="flex gap-6 justify-center mt-6">
-      <a href="/" className={holoLinkClass}>
+      <a href="/RasbiTuts/" className={holoLinkClass}>
         Home
       </a>
       <a href="/RasbiTuts/students" className={holoLinkClass}>
