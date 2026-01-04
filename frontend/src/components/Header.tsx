@@ -52,28 +52,28 @@ export default function Navbar() {
       <a href="/" className={holoLinkClass}>
         Home
       </a>
-      <a href="/#/students" className={holoLinkClass}>
+      <a href="/RasbiTuts/students" className={holoLinkClass}>
         Students
       </a>
       {
         <button
           onClick={() => {
             // clearToken();
-            navigate("/#/students");
+            navigate("/RasbiTuts/students");
           }}
           className={holoLinkClass}
         >
           {}
         </button>
       }
-      <a href="/#/tutorials" className={holoLinkClass}>
+      <a href="/RasbiTuts/tutorials" className={holoLinkClass}>
         Tutorials
       </a>
       {
         <button
           onClick={() => {
             // clearToken();
-            navigate("/#/tutorials");
+            navigate("/RasbiTuts/tutorials");
           }}
           className={holoLinkClass}
         >
