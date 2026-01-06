@@ -66,7 +66,7 @@ export default function Navbar() {
           {}
         </button>
       }
-      <a href="/tutorials" className={holoLinkClass}>
+      <a href="/RasbiTuts/#/tutorials" className={holoLinkClass}>
         Tutorials
       </a>
       {
