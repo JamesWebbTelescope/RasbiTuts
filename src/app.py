@@ -13,7 +13,8 @@ List of allowed origins for the frontend
 '''
 ALLOWED_ORIGINS = [ 
     "http://localhost:5173",
-    "https://jameswebbtelescope.github.io"
+    "https://jameswebbtelescope.github.io",
+    "http://127.0.0.1:8000/"
 ]
 
 
