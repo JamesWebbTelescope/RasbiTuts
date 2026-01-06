@@ -73,7 +73,7 @@ export default function Navbar() {
         <button
           onClick={() => {
             // clearToken();
-            navigate("/tutorials");
+            navigate("/RasbiTuts/#/tutorials");
           }}
           className={holoLinkClass}
         >

@@ -96,7 +96,7 @@ Please change the parent <Route path="${B}"> to <Route path="${B==="/"?"*":`${B}
     hover:before:opacity-50
     hover:before:scale-125
     before:pointer-events-none
-  `,children:"Tutorials"}),l[5]=v):v=l[5];let g;l[6]!==i?(g=W.jsx("button",{onClick:()=>{i("/tutorials")},className:`
+  `,children:"Tutorials"}),l[5]=v):v=l[5];let g;l[6]!==i?(g=W.jsx("button",{onClick:()=>{i("/RasbiTuts/#/tutorials")},className:`
     relative
     px-4 py-2
     text-green
@@ -146,4 +146,4 @@ Please change the parent <Route path="${B}"> to <Route path="${B==="/"?"*":`${B}
     hover:before:scale-80
     before:pointer-events-none
   `;function YT(){let l=T.useRef("");const[i,o]=T.useState([]),[c,f]=T.useState(!1),d="http://127.0.0.1:8000",v=[],g=async h=>{let p=h.includes("youtube");if(console.log(p),p==!0)return l.current=h,console.log(h),console.log("This is a youtube link"),[f(!1)];if(p==!1)return l.current=h,console.log(h),console.log("Nothing has happened yet"),[f(!0)]};return T.useEffect(()=>{(async()=>{const p=await bS(d);console.log("Welcome to the tutorials page");for(const y of p){console.log("Getting all tutorials");const b=p.find(x=>x.id===y.id);b&&(v.push({id:b.id,name:b.name,link:b.link}),console.log(b.id),console.log(b.name),console.log(b.link))}o(v)})()},[]),W.jsxs(cs,{children:[W.jsx("div",{className:"overlay-box relative text-center bg-red-800/70 text-green-300 uppercase text-sm font-semibold tracking-wide",children:W.jsxs(Kr,{children:[W.jsx(Kr.Header,{children:"Tutorials"}),i.map((h,p)=>W.jsx(Kr.Menu,{show:!0,children:W.jsx(Kr.Item,{className:qT,onClick:()=>{g(h.link),f(!c)},children:h.name})},p))]})}),W.jsx("div",{className:"relative text-center",children:c?W.jsx(aE,{url:l.current}):W.jsx(xE,{url:d,tutorial:l.current})})]})}function GT(){const l=ri.c(3);let i;l[0]===Symbol.for("react.memo_cache_sentinel")?(i=W.jsx(Jr,{path:"/",element:W.jsx(gS,{})}),l[0]=i):i=l[0];let o;l[1]===Symbol.for("react.memo_cache_sentinel")?(o=W.jsx(Jr,{path:"/students",element:W.jsx(TS,{})}),l[1]=o):o=l[1];let c;return l[2]===Symbol.for("react.memo_cache_sentinel")?(c=W.jsx(aS,{children:W.jsxs(Ub,{children:[i,o,W.jsx(Jr,{path:"/tutorials",element:W.jsx(YT,{})})]})}),l[2]=c):c=l[2],c}G0.createRoot(document.getElementById("root")).render(W.jsx(T.StrictMode,{children:W.jsx(GT,{})}));
-//# sourceMappingURL=index-B5NAhYfT.js.map
+//# sourceMappingURL=index-DYl2erAX.js.map
