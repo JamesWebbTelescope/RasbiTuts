@@ -22,7 +22,9 @@ def create_api_tutorials(db_manager):
             print(url)
             response = db_manager.tutorials.GetExternal(url)
             response_decoded = response.decode('UTF-8')
-            return response_decoded, 200
+            response_headers = jsonify(response_decoded)
+            response_headers.headers.add('Access-Control-Allow-Origin', '*')
+            return response_headers, 200
 
     @api.route("/")
     class Tutorials(Resource):
@@ -30,7 +32,9 @@ def create_api_tutorials(db_manager):
         @api.doc("Get all tutorials")
         def get(self):
             tutorials = db_manager.tutorials.GetAll()
-            return tutorials, 200
+            response = jsonify(tutorials)
+            response.headers.add('Access-Control-Allow-Origin', '*')
+            return response, 200
         
         @api.doc("Add new tutorial")
         @api.expect(tutorial_model)

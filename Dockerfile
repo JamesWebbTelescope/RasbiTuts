@@ -48,4 +48,4 @@ COPY . .
 EXPOSE 8000
 
 # Run the application.
-CMD python src/app.py
+CMD gunicorn 'frontend.node_modules..cache.gh-pages.https!github.com!JamesWebbTelescope!RaspberryPiTutorials_uge10_11.git.src.app:app' --bind=0.0.0.0:8000
