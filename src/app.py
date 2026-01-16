@@ -1,4 +1,4 @@
-from flask import Flask, send_from_directory
+from flask import Flask, Response, request, send_from_directory
 from werkzeug.middleware.proxy_fix import ProxyFix
 from apis import create_api#, jwt
 from database_commands.database_manager import DatabaseManager
@@ -16,6 +16,10 @@ ALLOWED_ORIGINS = [
     "https://jameswebbtelescope.github.io",
     "http://127.0.0.1:8000"
 ]
+
+def basic_authentication():
+        if request.method.lower() == 'options':
+            return Response()
 
 
 def get_origin(origin): #Check if frontend oriign is on the allowed list of website origins
@@ -52,6 +56,7 @@ def create_app():
     @app.route("/")
     @app.route("/#/students")
     @app.route("/#/tutorials")
+    @app.before_request(basic_authentication())
     #@app.route("/admin")
     def serve_react():  
         return send_from_directory(app.static_folder, 'index.html')
