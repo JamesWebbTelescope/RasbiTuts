@@ -17,9 +17,6 @@ ALLOWED_ORIGINS = [
     "http://127.0.0.1:8000"
 ]
 
-def basic_authentication():
-        if request.method.lower() == 'options':
-            return Response()
 
 
 def get_origin(origin): #Check if frontend oriign is on the allowed list of website origins
@@ -56,7 +53,10 @@ def create_app():
     @app.route("/")
     @app.route("/#/students")
     @app.route("/#/tutorials")
-    @app.before_request(basic_authentication())
+    @app.before_request
+    def basic_authentication():
+        if request.method.lower() == 'options':
+            return Response()
     #@app.route("/admin")
     def serve_react():  
         return send_from_directory(app.static_folder, 'index.html')
