@@ -14,7 +14,10 @@ List of allowed origins for the frontend
 ALLOWED_ORIGINS = [ 
     "http://localhost:5173",
     "https://jameswebbtelescope.github.io",
-    "http://127.0.0.1:8000"
+    "https://jameswebbtelescope.github.io/*",
+    "http://127.0.0.1:8000",
+    "http://127.0.0.1:8000/api/student",
+    "http://127.0.0.1:8000/api/tutorials",
 ]
 
 
@@ -37,10 +40,10 @@ def create_app():
     
     app = Flask(
         __name__, 
-        static_folder="..\\lager-frontend\\dist",
+        static_folder="..\\frontend\\dist",
         static_url_path="")
     app.wsgi_app = ProxyFix(app.wsgi_app) #Create the application
-    CORS(app, origins=["http://localhost:5173"], supports_credentials=True) 
+    CORS(app, origins=ALLOWED_ORIGINS, supports_credentials=True, send_wildcard=True) 
 
     #app.config["JWT_SECRET_KEY"] = config.jwt_token
     app.config["DEBUG"] = config.debug
@@ -53,10 +56,6 @@ def create_app():
     @app.route("/")
     @app.route("/#/students")
     @app.route("/#/tutorials")
-    @app.before_request
-    def basic_authentication():
-        if request.method.lower() == 'options':
-            return Response()
     #@app.route("/admin")
     def serve_react():  
         return send_from_directory(app.static_folder, 'index.html')
